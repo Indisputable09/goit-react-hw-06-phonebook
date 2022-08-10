@@ -12,7 +12,7 @@ import { addContact, removeContact, filterChange } from 'redux/contactSlice';
 
 export const App = () => {
   const items = useSelector(state => state.contacts.items);
-  const filterValurReducer = useSelector(state => state.contacts.filter);
+  const filterValueReducer = useSelector(state => state.contacts.filter);
   const dispatch = useDispatch();
   const [contacts, setContacts] = useState(items);
   // const [contacts, setContacts] = useState(
@@ -27,7 +27,7 @@ export const App = () => {
   //     { id: nanoid(), name: 'Anna Nonear', number: '234-91-56' },
   //   ]
   // );
-  const [filter, setFilter] = useState(filterValurReducer);
+  const [filter, setFilter] = useState(filterValueReducer);
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));

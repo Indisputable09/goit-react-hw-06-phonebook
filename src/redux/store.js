@@ -6,8 +6,3 @@ export const store = configureStore({
     contacts: contactSlice.reducer,
   },
 });
-// export default store;
-// contacts: {
-//       items: [],
-//       filter: '',
-//     },

@@ -4,12 +4,12 @@ import { List, ListItem, Button, Line } from './ContactList.styled';
 const ContactList = ({ filter, handleClick }) => {
   return (
     <List>
-      {filter.map(contact => (
-        <ListItem key={contact.id} name={contact.name}>
+      {filter.map(({ id, name, number }) => (
+        <ListItem key={id} name={name}>
           <Line>
-            {contact.name}: <span>{contact.number}</span>
+            {name}: <span>{number}</span>
           </Line>
-          <Button type="button" onClick={() => handleClick(contact.id)}>
+          <Button type="button" onClick={() => handleClick(id)}>
             Delete
           </Button>
         </ListItem>
