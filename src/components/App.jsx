@@ -1,5 +1,5 @@
 import { GlobalStyle } from 'components/GlobalStyle';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
 import Swal from 'sweetalert2';
@@ -8,11 +8,17 @@ import Filter from 'components/Filter';
 import ContactList from 'components/ContactList';
 import ContactsSection from 'components/Section';
 import { Section, Title } from './App.styled';
-import { addContact, removeContact, filterChange } from 'redux/contactSlice';
+import {
+  addContact,
+  removeContact,
+  filterChange,
+  getContacts,
+  getFilterValue,
+} from 'redux/contactSlice';
 
 export const App = () => {
-  const items = useSelector(state => state.contacts.items);
-  const filterValueReducer = useSelector(state => state.contacts.filter);
+  const items = useSelector(getContacts);
+  const filterValueReducer = useSelector(getFilterValue);
   const dispatch = useDispatch();
   const [contacts, setContacts] = useState(items);
   // const [contacts, setContacts] = useState(
@@ -29,9 +35,9 @@ export const App = () => {
   // );
   const [filter, setFilter] = useState(filterValueReducer);
 
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
   const handleSubmit = e => {
     e.preventDefault();
